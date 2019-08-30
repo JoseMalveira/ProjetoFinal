@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<style>
+form {
+    /* Apenas para centralizar o form na página */
+    margin: 0 auto;
+    width: 400px;
+    /* Para ver as bordas do formulário */
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+}
+form div + div {
+    margin-top: 1em;
+}
+label {
+    /*Para ter certeza que todas as labels tem o mesmo tamanho e estão propriamente alinhadas */
+    display: inline-block;
+    width: 100px;
+    text-align: left;
+}
+input, textarea {
+    /* Para certificar-se que todos os campos de texto têm as mesmas configurações de fonte. Por padrão, textareas ter uma fonte monospace*/
+    font: 1em sans-serif;
+
+    /* Para dar o mesmo tamanho a todos os campo de texto */
+    width: 300px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    /* Para harmonizar o look & feel das bordas nos campos de texto*/
+    border: 2px solid #754;
+}
+input:focus, textarea:focus {
+    /* Dar um pouco de destaque nos elementos ativos */
+    border-color: #754;
+}
+textarea {
+    /* Para alinhar corretamente os campos de texto de várias linhas com sua label*/
+    vertical-align: top;
+
+    /* Para dar espaço suficiente para digitar algum texto */
+    height: 5em;
+
+    /* Para permitir aos usuários redimensionarem qualquer textarea verticalmente. Ele não funciona em todos os browsers */
+    resize: vertical;
+}
+
+</style>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" >
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<title>Cadastro de Produto</title>
+</head>
+<body>
+  <form action="/save" method="post">
+  <h1>Cadastrar Produto</h1>
+	<div>
+			<label for="name">Name</label>
+			<input type="text" name="name" id="name"/>
+		</div>
+		<div>
+
+			<label for="brand">Marca</label>
+			<input type="text"  name="brand" id="brand"/>
+			
+		</div>		
+		<div>
+
+			<label for="madein">Fabricado em</label>
+			<input type="text" name="madein" id="madein"/>
+			
+		</div>		
+		<div>
+			<label for="price">Preco</label>
+			<input type="text" name="price" id="price"/>			
+		</div>		
+		<div class="button">		
+			<button type="submit">Salvar Cadastro</button>
+		</div>
+	</form>
+
+</body>
+</html>

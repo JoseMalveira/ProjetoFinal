@@ -1,0 +1,97 @@
+    <!DOCTYPE html>
+    
+    <style>
+form {
+    /* Apenas para centralizar o form na página */
+    margin: 0 auto;
+    width: 400px;
+    /* Para ver as bordas do formulário */
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+}
+form div + div {
+    margin-top: 1em;
+}
+label {
+    /*Para ter certeza que todas as labels tem o mesmo tamanho e estão propriamente alinhadas */
+    display: inline-block;
+    width: 100px;
+    text-align: left;
+}
+input, textarea {
+    /* Para certificar-se que todos os campos de texto têm as mesmas configurações de fonte. Por padrão, textareas ter uma fonte monospace*/
+    font: 1em sans-serif;
+
+    /* Para dar o mesmo tamanho a todos os campo de texto */
+    width: 300px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    /* Para harmonizar o look & feel das bordas nos campos de texto*/
+    border: 2px solid #999;
+}
+input:focus, textarea:focus {
+    /* Dar um pouco de destaque nos elementos ativos */
+    border-color: #999;
+}
+textarea {
+    /* Para alinhar corretamente os campos de texto de várias linhas com sua label*/
+    vertical-align: top;
+
+    /* Para dar espaço suficiente para digitar algum texto */
+    height: 5em;
+
+    /* Para permitir aos usuários redimensionarem qualquer textarea verticalmente. Ele não funciona em todos os browsers */
+    resize: vertical;
+}
+
+</style>
+    
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" >
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <head>
+        <title> Listagem de produtos</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>Listagem de Produtos</h1>
+
+
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                        Nome
+                        </th>                        
+                        <th>
+                        Brand
+                        </th>
+                        <th>Made in</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="produto : ${listproduct}">
+                    <tr>
+                        <td th:text="${produto.name}">Produto</td>
+                        <td th:text="${produto.brand}"> Marca</td>
+                        <td th:text="${produto.madein}"> Origem</td>
+                        <td th:text="${produto.price}"> Preco</td>
+                        <td>
+                            <a th:href="@{'/edit/' + ${produto.id}}">Editar</a>
+                            <a th:href="@{'/delete/' + ${produto.id}}">Excluir</a>
+                        </td>
+                    </tr>                   
+                </th:block>
+                </tbody>
+            </table>
+             <a class="btn btn-primary" style="margin-bottom: 10px" href="/novo">Cadastrar Novos Produtos</a>
+        </div>
+
+    </body>
+</html>
